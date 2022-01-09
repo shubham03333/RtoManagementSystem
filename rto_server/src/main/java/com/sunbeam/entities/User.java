@@ -36,12 +36,10 @@ public class User {
 	private long mobile_no ;
 	private String email;
 	private String password;
-	@Lob
-	private byte[] photo;
 	public User() {
 	}
 	public User(int id, long aadhar_no, String name, String role, Date dob, String address, String gender,
-			String blood_group, long mobile_no, String email, String password, byte[] photo) {
+			String blood_group, long mobile_no, String email, String password) {
 		this.id = id;
 		this.aadhar_no = aadhar_no;
 		this.name = name;
@@ -53,7 +51,6 @@ public class User {
 		this.mobile_no = mobile_no;
 		this.email = email;
 		this.password = password;
-		this.photo = photo;
 	}
 	public int getId() {
 		return id;
@@ -121,19 +118,13 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public byte[] getphoto() {
-		return photo;
-	}
-	public void setphoto(byte[] photo) {
-		this.photo = photo;
-	}
 	@Override
 	public String toString() {
 		return String.format(
-				"User [id=%s, aadhar_no=%s, name=%s, role=%s, dob=%s, address=%s, gender=%s, blood_group=%s, mobile_no=%s, email=%s, password=%s, photo=%s]",
-				id, aadhar_no, name, role, dob, address, gender, blood_group, mobile_no, email, password,
-				Arrays.toString(photo));
+				"User [id=%s, aadhar_no=%s, name=%s, role=%s, dob=%s, address=%s, gender=%s, blood_group=%s, mobile_no=%s, email=%s, password=%s]",
+				id, aadhar_no, name, role, dob, address, gender, blood_group, mobile_no, email, password);
 	}
+	
 	
 	
 

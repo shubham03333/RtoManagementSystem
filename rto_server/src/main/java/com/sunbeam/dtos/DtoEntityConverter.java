@@ -1,35 +1,9 @@
 package com.sunbeam.dtos;
 
-import java.io.IOException;
-//import java.util.List;
-//import java.util.stream.Collectors;
-import java.util.Date;
-
-import javax.persistence.Lob;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 import org.springframework.stereotype.Component;
 //import org.springframework.web.multipart.MultipartException;
 
 import com.sunbeam.entities.User;
-
-//private int id;
-//private String name;
-//private String email;
-//private String password;
-//private int aadhar_no;
-//private String role;
-//@Temporal(TemporalType.DATE)
-//private Date dob;
-//private String address;
-//private String gender;
-//private String blood_group;
-//private int mobile_no ;
-//@Lob
-//private byte[] photo;
-
-
 
 @Component
 public class DtoEntityConverter {
@@ -65,21 +39,5 @@ public class DtoEntityConverter {
 		entity.setRole(dto.getRole());
 		return entity;		
 	}
-//	
-//	
 
-//	public BlogAttachment toAttachmentEntity(BlogAttachmentFormDTO dto) {
-//		if(dto == null)
-//			return null;
-//		BlogAttachment entity = new BlogAttachment();
-//		entity.setId(dto.getId());
-//		entity.setBlog(new Blog(dto.getBlogId()));
-//		entity.setCreatedTimestamp(dto.getCreatedTimestamp());
-//		try {
-//			entity.setData(dto.getDataFile().getBytes());
-//		} catch (Exception e) {
-//			throw new MultipartException("Can't convert MultipartFile to bytes : " + dto.getDataFile(), e);
-//		}
-//		return entity;
-//	}
 }

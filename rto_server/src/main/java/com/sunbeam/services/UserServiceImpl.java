@@ -55,6 +55,18 @@ public class UserServiceImpl {
 		String encPassword = passwordEncoder.encode(rawPassword);
 		userDto.setPassword(encPassword);
 		User user = converter.toUserEntity(userDto);
+		
+		//#############
+//		    if(findUserByEmail(user.getEmail())) {
+//		    	
+//		    }
+		
+		
+		
+		//##############
+		
+		
+		
 		user = userDao.save(user);
 		userDto = converter.toUserDto(user);
 		userDto.setPassword("*******");
