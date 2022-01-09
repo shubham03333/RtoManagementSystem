@@ -30,6 +30,16 @@ public class UserServiceImpl {
 	@Autowired
 	private DtoEntityConverter converter;
 	
+	public User findUserFromdbByEmail(String email)
+	{
+		User user=userDao.findByEmail(email);
+		return user;
+	}
+	
+	public User findUserFromdbById(int userId) {
+		User user = userDao.findById(userId);
+		return user;
+	}
 	public UserDTO findUserById(int userId) {
 		User user = userDao.findById(userId);
 		return converter.toUserDto(user);
@@ -51,26 +61,33 @@ public class UserServiceImpl {
 	}
 
 	public UserDTO saveUser(UserDTO userDto) {
+		
+		User newUser=findUserFromdbByEmail(userDto.getEmail());
+		if(newUser != null)
+			return null;
 		String rawPassword = userDto.getPassword();
 		String encPassword = passwordEncoder.encode(rawPassword);
 		userDto.setPassword(encPassword);
 		User user = converter.toUserEntity(userDto);
-		
-		//#############
-//		    if(findUserByEmail(user.getEmail())) {
-//		    	
-//		    }
-		
-		
-		
-		//##############
-		
-		
-		
 		user = userDao.save(user);
 		userDto = converter.toUserDto(user);
 		userDto.setPassword("*******");
 		return userDto;
+	}
+	
+	
+	//under testing
+	public User saveUserdb(User user) {
+		
+		User newUser=findUserFromdbByEmail(user.getEmail());
+		if(newUser != null)
+			return null;
+		String rawPassword = user.getPassword();
+		String encPassword = passwordEncoder.encode(rawPassword);
+		user.setPassword(encPassword);
+		User user1 = userDao.save(user);
+		user1.setPassword("*******");
+		return user;
 	}
 	
 	public List<User> findAllUsers() {
