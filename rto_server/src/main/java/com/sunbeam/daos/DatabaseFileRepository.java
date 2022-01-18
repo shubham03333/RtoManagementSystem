@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.sunbeam.entities.DatabaseFile;
 
 @Repository
-public interface DatabaseFileRepository extends JpaRepository<DatabaseFile, String> {
+public interface DatabaseFileRepository extends JpaRepository<DatabaseFile, Integer> {
 
+	
 }

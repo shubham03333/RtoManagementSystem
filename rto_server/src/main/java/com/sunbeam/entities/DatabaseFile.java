@@ -7,14 +7,29 @@ import javax.persistence.*;
 @Entity
 @Table(name = "files")
 public class DatabaseFile {
+	
+//	@GeneratedValue(generator = "uuid")
+//	@GenericGenerator(name = "uuid", strategy = "uuid2")
+//	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
-	private String id;
-
+    private int id;
 	private String fileName;
 
 	private String fileType;
+	
+	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id")
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+//		user.setDatabaseFile(this);
+	}
 
 	@Lob
 	private byte[] data;
@@ -23,15 +38,18 @@ public class DatabaseFile {
 
 	}
 
+
 	public DatabaseFile(String fileName, String fileType, byte[] data) {
 		this.fileName = fileName;
 		this.fileType = fileType;
 		this.data = data;
 	}
+	
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
+
 
 	public String getFileName() {
 		return fileName;
@@ -45,7 +63,7 @@ public class DatabaseFile {
 		return data;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -60,4 +78,6 @@ public class DatabaseFile {
 	public void setData(byte[] data) {
 		this.data = data;
 	}
+	
+	
 }

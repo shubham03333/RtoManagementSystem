@@ -2,9 +2,12 @@ package com.sunbeam.dtos;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.sunbeam.entities.DatabaseFile;
 
 public class UserDTO {
 	private int id;
@@ -16,10 +19,9 @@ public class UserDTO {
 	private Date dob;
 	private String address;
 	private String gender;
-	private String blood_group;
+	private String blood_group; 	
 	private long mobile_no ;
-//	@Lob
-//	private byte[] photo;
+	private int photo_id;
 	
 	public UserDTO() {
 	}
@@ -102,6 +104,13 @@ public long getMobile_no() {
 }
 public void setMobile_no(long mobile_no) {
 	this.mobile_no = mobile_no;
+}
+
+public int getPhoto_id() {
+	return photo_id;
+}
+public void setPhoto_id(int photo_id) {
+	this.photo_id = photo_id;
 }
 @Override
 public String toString() {

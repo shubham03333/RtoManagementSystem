@@ -23,7 +23,7 @@ public class FileDownloadController {
     private DatabaseFileService fileStorageService;
 
     @GetMapping("/downloadFile/{fileId:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId, HttpServletRequest request) {
+    public ResponseEntity<Resource> downloadFile(@PathVariable int fileId, HttpServletRequest request) {
         // Load file as Resource
         DatabaseFile databaseFile = fileStorageService.getFile(fileId);
 

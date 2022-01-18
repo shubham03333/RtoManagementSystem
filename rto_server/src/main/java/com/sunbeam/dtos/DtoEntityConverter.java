@@ -1,12 +1,18 @@
 package com.sunbeam.dtos;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 //import org.springframework.web.multipart.MultipartException;
 
+import com.sunbeam.entities.DatabaseFile;
 import com.sunbeam.entities.User;
+import com.sunbeam.services.DatabaseFileService;
 
 @Component
 public class DtoEntityConverter {
+	DatabaseFile databaseFile;
+	@Autowired
+	DatabaseFileService databaseFileService;
 	public UserDTO toUserDto(User entity) {
 		UserDTO dto = new UserDTO();
 		dto.setId(entity.getId());
@@ -20,6 +26,7 @@ public class DtoEntityConverter {
 		dto.setGender(entity.getGender());
 		dto.setMobile_no(entity.getMobile_no());
 		dto.setRole(entity.getRole());
+//		dto.setPhoto_id(entity.getDatabaseFile().getId());
 		return dto;
 	}
 
@@ -37,6 +44,7 @@ public class DtoEntityConverter {
 		entity.setGender(dto.getGender());
 		entity.setMobile_no(dto.getMobile_no());
 		entity.setRole(dto.getRole());
+		entity.setPhoto_id(dto.getPhoto_id());
 		return entity;		
 	}
 
