@@ -4,6 +4,7 @@ package com.sunbeam.entities;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,8 @@ public class Puc {
 	//| puc_id | registration_id | user_id | from_date  | to_date    | co2  | hc   | payment_id |
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int puc_id;
+	@Column(name = "puc_id")
+	private int id;
 	private String puc_no;
 	@Temporal(TemporalType.DATE)
 	private Date from_date;
@@ -49,7 +51,7 @@ public class Puc {
 
 	public Puc(int puc_id, String puc_no, Date from_date, Date to_date, float co2, float hc, User user,
 			VehicleRegistration vehicleRegistration, Payment payment) {
-		this.puc_id = puc_id;
+		this.id = puc_id;
 		this.puc_no = puc_no;
 		this.from_date = from_date;
 		this.to_date = to_date;
@@ -61,13 +63,13 @@ public class Puc {
 	}
 
 
-	public int getPuc_id() {
-		return puc_id;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setPuc_id(int puc_id) {
-		this.puc_id = puc_id;
+	public void setId(int puc_id) {
+		this.id = puc_id;
 	}
 
 
@@ -155,7 +157,7 @@ public class Puc {
 	public String toString() {
 		return String.format(
 				"Puc [puc_id=%s, puc_no=%s, from_date=%s, to_date=%s, co2=%s, hc=%s, user=%s, vehicleRegistration=%s, payment=%s]",
-				puc_id, puc_no, from_date, to_date, co2, hc, user, vehicleRegistration, payment);
+				id, puc_no, from_date, to_date, co2, hc, user, vehicleRegistration, payment);
 	}
 
 	

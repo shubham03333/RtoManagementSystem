@@ -3,6 +3,7 @@ package com.sunbeam.entities;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,8 @@ public class Permit {
 	//permit_id | permit_no| registration_id| user_id| from_date| to_date| from_state| to_state| payment_id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	private int permit_id;
+	@Column(name = "permit_id")
+	private int id;
 	private String permit_no;
 	@Temporal(TemporalType.DATE)
 	private Date from_date;
@@ -29,26 +31,26 @@ public class Permit {
 	private Date to_date;
 	private String from_state;
 	private String to_state;
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="registration_id")
 	private VehicleRegistration vehicleRegistration;
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="payment_no")
 	private Payment payment  ;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user ;
 
 	public Permit() {
 	}
 
-	public int getPermit_id() {
-		return permit_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setPermit_id(int permit_id) {
-		this.permit_id = permit_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPermit_no() {
@@ -113,7 +115,7 @@ public class Permit {
 	public String toString() {
 		return String.format(
 				"Permit [permit_id=%s, permit_no=%s, from_date=%s, to_date=%s, from_state=%s, to_state=%s, vehicleRegistration=%s, payment=%s]",
-				permit_id, permit_no, from_date, to_date, from_state, to_state, vehicleRegistration, payment);
+				id, permit_no, from_date, to_date, from_state, to_state, vehicleRegistration, payment);
 	}
 
 	

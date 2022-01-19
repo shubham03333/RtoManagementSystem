@@ -1,12 +1,12 @@
 package com.sunbeam.payload;
 
-public class Responsef {
+public class Response {
     private String fileName;
     private String fileDownloadUri;
     private String fileType;
     private long size;
 
-    public Responsef(String fileName, String fileDownloadUri, String fileType, long size) {
+    public Response(String fileName, String fileDownloadUri, String fileType, long size) {
         this.fileName = fileName;
         this.fileDownloadUri = fileDownloadUri;
         this.fileType = fileType;

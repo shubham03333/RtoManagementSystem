@@ -21,12 +21,21 @@ public class VehicleTransfer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "transfer_id")
 	private int id;
+	private String transfer_no;
 	private String new_owner;
 	private long new_owner_aadhar;
+	public String getTransfer_no() {
+		return transfer_no;
+	}
+
+	public void setTransfer_no(String transfer_no) {
+		this.transfer_no = transfer_no;
+	}
+
 	private String new_owner_email;
 	private long new_owner_mobile;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "registration_id")
 	private VehicleRegistration vehicleRegistration1;
 	@OneToOne

@@ -3,6 +3,7 @@ package com.sunbeam.entities;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,42 +16,42 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "payment_table")
 public class Payment {
-	
-	//| payment_refno | user_id | payment_id | payment_mode | amount | payment_date |
-	
+
+	// | payment_refno | user_id | payment_id | payment_mode | amount | payment_date
+	// |
+
 	@Id
-	private int payment_refno;
+	@Column(name = "payment_refno")
+	private int id;
 	private int payment_id;
 	private String payment_mode;
 	private double amount;
 	@Temporal(TemporalType.DATE)
 	private Date payment_date;
-	
+
 	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "user_id")
-	private  User user;
-	
+	private User user;
+
 	@OneToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name="registration_id")
+	@JoinColumn(name = "registration_id")
 	private VehicleRegistration vehicleRegistration;
-	
+
 	public Payment() {
 	}
 
 	public Payment(int payment_refno, int user_id, int payment_id, String payment_mode, double amount,
 			Date payment_date) {
-		this.payment_refno = payment_refno;
+		this.id = payment_refno;
 		this.payment_id = payment_id;
 		this.payment_mode = payment_mode;
 		this.amount = amount;
 		this.payment_date = payment_date;
 	}
 
-	public int getPayment_refno() {
-		return payment_refno;
+	public int getId() {
+		return id;
 	}
-
-
 
 	public User getUser() {
 		return user;
@@ -84,10 +85,9 @@ public class Payment {
 		return payment_date;
 	}
 
-	public void setPayment_refno(int payment_refno) {
-		this.payment_refno = payment_refno;
+	public void setId(int payment_refno) {
+		this.id = payment_refno;
 	}
-
 
 	public void setPayment_id(int payment_id) {
 		this.payment_id = payment_id;
@@ -107,9 +107,8 @@ public class Payment {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"Payment [payment_refno=%s, payment_id=%s, payment_mode=%s, amount=%s, payment_date=%s]",
-				payment_refno, payment_id, payment_mode, amount, payment_date);
+		return String.format("Payment [payment_refno=%s, payment_id=%s, payment_mode=%s, amount=%s, payment_date=%s]",
+				id, payment_id, payment_mode, amount, payment_date);
 	}
 
 }

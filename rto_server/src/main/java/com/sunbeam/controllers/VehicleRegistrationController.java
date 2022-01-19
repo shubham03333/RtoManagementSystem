@@ -73,7 +73,7 @@ public class VehicleRegistrationController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<VehicleRegistration> updateUser(@PathVariable int id, @RequestBody VehicleRegistration rcDetails){
+	public ResponseEntity<VehicleRegistration> updateRC(@PathVariable int id, @RequestBody VehicleRegistration rcDetails){
 		VehicleRegistration rc = registrationServiceImpl.findBYId(id);
 		if(rc==null) {
 			return (ResponseEntity<VehicleRegistration>) Response.error("RC not exist with id :"+id);
